@@ -1,102 +1,69 @@
 # from https://packaging.python.org/en/latest/appveyor/
 environment:
-  HDF5_VERSION: "1.8.17"
+  HDF5_VERSION: "1.10.5"
   TOX_TESTENV_PASSENV: "HDF5_DIR"
 
   matrix:
 
-    ### USING HDF5 1.8 ###
-    - PYTHON: "C:\\Python27"
-      TOXENV: "py27-test-deps"
+    - PYTHON: "C:\\Python37-x64"
+      TOXENV: "py37-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "9"
+      HDF5_VSVERSION: "14-64"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    - PYTHON: "C:\\Python34"
-      TOXENV: "py34-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "10"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    - PYTHON: "C:\\Python35"
-      TOXENV: "py35-test-deps"
+      
+    - PYTHON: "C:\\Python37"
+      TOXENV: "py37-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
       HDF5_VSVERSION: "14"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
+  
+    - PYTHON: "C:\\Python36-x64"
+      TOXENV: "py36-test-deps"
+      TOXPYTHON: "%PYTHON%\\python.exe"
+      HDF5_VSVERSION: "14-64"
+      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
+      
     - PYTHON: "C:\\Python36"
       TOXENV: "py36-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
       HDF5_VSVERSION: "14"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    - PYTHON: "C:\\Python27-x64"
-      TOXENV: "py27-test-deps"
+      
+    - PYTHON: "C:\\Python35-x64"
+      TOXENV: "py35-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "9-64"
+      HDF5_VSVERSION: "14-64"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
+      
+    - PYTHON: "C:\\Python35"
+      TOXENV: "py35-test-deps"
+      TOXPYTHON: "%PYTHON%\\python.exe"
+      HDF5_VSVERSION: "14"
+      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
+      
     - PYTHON: "C:\\Python34-x64"
       TOXENV: "py34-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "10-64"
-      DISTUTILS_USE_SDK: "1"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    - PYTHON: "C:\\Python35-x64"
-      TOXENV: "py35-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
       HDF5_VSVERSION: "14-64"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    - PYTHON: "C:\\Python36-x64"
-      TOXENV: "py36-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "14-64"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-
-    ### USING HDF5 1.10 ###
-    - PYTHON: "C:\\Python27"
-      TOXENV: "py27-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "9"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
-
-    - PYTHON: "C:\\Python35"
-      TOXENV: "py35-test-deps"
+      
+    - PYTHON: "C:\\Python34"
+      TOXENV: "py34-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
       HDF5_VSVERSION: "14"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
-
-    - PYTHON: "C:\\Python36"
-      TOXENV: "py36-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "14"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
-
+      
     - PYTHON: "C:\\Python27-x64"
       TOXENV: "py27-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
       HDF5_VSVERSION: "9-64"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
-
-    - PYTHON: "C:\\Python35-x64"
-      TOXENV: "py35-test-deps"
+      
+    - PYTHON: "C:\\Python27"
+      TOXENV: "py27-test-deps"
       TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "14-64"
+      HDF5_VSVERSION: "9"
       HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
-
-    - PYTHON: "C:\\Python36-x64"
-      TOXENV: "py36-test-deps"
-      TOXPYTHON: "%PYTHON%\\python.exe"
-      HDF5_VSVERSION: "14-64"
-      HDF5_DIR: "C:\\hdf5\\%HDF5_VERSION%\\%HDF5_VSVERSION%"
-      HDF5_VERSION: "1.10.1"
 
 install:
   # We need wheel installed to build wheels
@@ -121,15 +88,15 @@ test_script:
 # This is commented out as there's no easy way to deal with numpy dropping
 # older python versions without a recent pip/setuptools.
 #after_test:
-#  # This step builds your wheels.
-#  # Again, you only need build.cmd if you're building C extensions for
-#  # 64-bit Python 3.4. And you need to use %PYTHON% to get the correct
-#  # interpreter
-#  - "ci\\appveyor\\build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
-#
-#artifacts:
-#  # bdist_wheel puts your built wheel in the dist directory
-#  - path: dist\*
+  # This step builds your wheels.
+  # Again, you only need build.cmd if you're building C extensions for
+  # 64-bit Python 3.4. And you need to use %PYTHON% to get the correct
+  # interpreter
+  - "ci\\appveyor\\build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
+
+artifacts:
+  # bdist_wheel puts your built wheel in the dist directory
+  - path: dist\*
 
 cache:
   - "%LOCALAPPDATA%\\pip\\Cache"
